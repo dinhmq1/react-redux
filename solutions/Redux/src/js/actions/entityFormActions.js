@@ -17,7 +17,7 @@ export function fetchEntityForm() {
       - change "reacttest" below to any other username
       - post some tweets to http://rest.learncode.academy/api/yourusername/tweets
     */
-    axios.get("http://localhost:3000/api/entity")
+    axios.get("http://d7287c02.ngrok.io/api/entityforms")
       .then((response) => {
         dispatch({type: "FETCH_ENTITY_FORM_FULFILLED", payload: response.data})
       })
