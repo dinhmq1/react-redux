@@ -11,7 +11,7 @@ import { fetchEntityForm } from "../actions/entityFormActions"
     return {
         user: store.user.user,
         userFetcher: store.user.fetched,
-        entityForm: store.entityForm.entityForm,
+        entityForms: store.entityForms.entityForms,
     };
 })
 export default class Layout extends React.Component {
@@ -23,11 +23,11 @@ export default class Layout extends React.Component {
         this.props.dispatch(fetchEntityForm())
     }
     render() {
-        const { user, entityForm } = this.props;
-        if (!entityForm.length) {
+        const { user, entityForms } = this.props;
+        if (!entityForms.length) {
             return <button onClick={this.fetchEntityForm.bind(this)}>load entity form</button>
         }
-        const mappedEntityForms = entityForm.map(entityForm => <li>{entityForm.text}</li>)
+        const mappedEntityForms = entityForms.map(entityForm => <li key={entityForm.id}>{entityForm.text}</li>)
         return <div>
         <h1>{this.props.user.name}</h1>
         <ul>{mappedEntityForms}</ul>

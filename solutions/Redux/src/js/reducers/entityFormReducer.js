@@ -23,7 +23,7 @@ export default function reducer(state={
       case "ADD_ENTITY_FORM": {
         return {
           ...state,
-          entityForms: [...state.entityForm, action.payload],
+          entityForms: [...state.entityForms, action.payload],
         }
       }
       case "UPDATE_ENTITY_FORM": {
@@ -40,7 +40,7 @@ export default function reducer(state={
       case "DELETE_ENTITY_FORM": {
         return {
           ...state,
-          entityForms: state.entityForms.filter(entityForm => entityForm.id !== action.payload),
+          entityForms: state.entityForms.filter(entity => entity.id !== action.payload),
         }
       }
     }

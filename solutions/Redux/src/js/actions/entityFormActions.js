@@ -1,6 +1,13 @@
 import axios from "axios";
 
 export function fetchEntityForm() {
+  // return {
+  //   type: "FETCH_ENTITY_FORM",
+  //   payload: {
+  //     id: "Mike",
+  //     text: "this is entity form",
+  //   }
+  // }
   return function(dispatch) {
     dispatch({type: "FETCH_ENTITY_FORM"});
     
@@ -10,7 +17,7 @@ export function fetchEntityForm() {
       - change "reacttest" below to any other username
       - post some tweets to http://rest.learncode.academy/api/yourusername/tweets
     */
-    axios.get("http://rest.learncode.academy/api/reacttest/tweets")
+    axios.get("http://localhost:3000/api/entity")
       .then((response) => {
         dispatch({type: "FETCH_ENTITY_FORM_FULFILLED", payload: response.data})
       })
