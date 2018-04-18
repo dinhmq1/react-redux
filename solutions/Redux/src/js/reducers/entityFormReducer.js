@@ -29,7 +29,7 @@ export default function reducer(state={
       case "UPDATE_ENTITY_FORM": {
         const { id, text } = action.payload
         const newEntityForms = [...state.entityForms]
-        const entityFormToUpdate = newEntityForms.findIndex(entityForm => entityForm.id === id)
+        const entityFormToUpdate = newEntityForms.findIndex(entityForms => entityForms.id === id)
         newEntityForms[entityFormToUpdate] = action.payload;
 
         return {
@@ -40,7 +40,7 @@ export default function reducer(state={
       case "DELETE_ENTITY_FORM": {
         return {
           ...state,
-          entityForms: state.entityForms.filter(entity => entity.id !== action.payload),
+          entityForms: state.entityForms.filter(entityForms => entityForms.id !== action.payload),
         }
       }
     }

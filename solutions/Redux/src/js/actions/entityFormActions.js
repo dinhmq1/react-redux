@@ -1,23 +1,12 @@
 import axios from "axios";
 
 export function fetchEntityForm() {
-  // return {
-  //   type: "FETCH_ENTITY_FORM",
-  //   payload: {
-  //     id: "Mike",
-  //     text: "this is entity form",
-  //   }
-  // }
+
   return function(dispatch) {
     dispatch({type: "FETCH_ENTITY_FORM"});
-    
-    /* 
-      http://rest.learncode.academy is a public test server, so another user's experimentation can break your tests
-      If you get console errors due to bad data:
-      - change "reacttest" below to any other username
-      - post some tweets to http://rest.learncode.academy/api/yourusername/tweets
-    */
-    axios.get("http://d7287c02.ngrok.io/api/entityforms")
+    //axios.get("http://d7287c02.ngrok.io/api/entityforms")
+    // be sure to POST some data to the below url to test
+    axios.get("http://rest.learncode.academy/api/admin/entityform")
       .then((response) => {
         dispatch({type: "FETCH_ENTITY_FORM_FULFILLED", payload: response.data})
       })
