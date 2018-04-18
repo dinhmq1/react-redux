@@ -5,10 +5,13 @@ import { connect } from "react-redux";
 // the first is for getting store values in as props and it expects to return an object which gets returned as props
 // and the second 
 import { fetchUser } from "../actions/userActions"
+import { fetchEntityForm } from "../actions/entityFormActions"
+
 @connect((store) => {
     return {
         user: store.user.user,
-        userFetcher: store.user.fetched
+        userFetcher: store.user.fetched,
+        entityForm: store.entityForm.entityForm,
     };
 })
 export default class Layout extends React.Component {
@@ -16,8 +19,18 @@ export default class Layout extends React.Component {
     componentWillMount() {
         this.props.dispatch(fetchUser())
     }
+    fetchEntityForm() {
+        this.props.dispatch(fetchEntityForm())
+    }
     render() {
-        console.log(this.props)
-        return null;
+        const { user, entityForm } = this.props;
+        if (!entityForm.length) {
+            return <button onClick={this.fetchEntityForm.bind(this)}>load entity form</button>
+        }
+        const mappedEntityForms = entityForm.map(entityForm => <li>{entityForm.text}</li>)
+        return <div>
+        <h1>{this.props.user.name}</h1>
+        <ul>{mappedEntityForms}</ul>
+        </div>;
     }
 }

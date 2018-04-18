@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import entityFormReducer from './entityFormReducer'
+import entityForm from './entityFormReducer'
 import user from './userReducer'
 
 export default combineReducers({
-    entityFormReducer,
+    entityForm,
     user
 })
